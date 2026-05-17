@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos de carga</title>
+</head>
+<body>
+
+    <h2>Eventos de carga</h2>
+    
+    <script>
+        //LOAD
+        window.addEventListener('load', () => {
+            console.log('La página ha terminado de cargarse');
+        });
+
+        //DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('El DOM ha sido completamente cargado y parseado');
+        });
+
+        //BEFOREUNLOAD
+        window.addEventListener('beforeunload', (event) => {
+            event.preventDefault(); // Previene el comportamiento por defecto
+            event.returnValue = ''; // Chrome requiere que se asigne un valor a returnValue
+            console.log('El usuario está a punto de abandonar la página');
+        });
+
+        //UNLOAD
+        window.addEventListener('unload', () => {
+            console.log('La página se está descargando');
+        });
+
+        //ERROR
+        window.addEventListener('error', (event) => {
+            console.log('Se ha producido un error: ' + event.message);
+        });
+
+        //RESIZE
+        window.addEventListener('resize', () => {
+            console.log('La ventana ha sido redimensionada a: ' + window.innerWidth + 'x' + window.innerHeight);
+        });
+
+        //SCROLL
+        window.addEventListener('scroll', () => {
+            console.log('La página ha sido desplazada a: ' + window.scrollX + ',' + window.scrollY);
+        });
+
+    </script>
+    
+</body>
+</html>

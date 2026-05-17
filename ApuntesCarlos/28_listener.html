@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listener</title>
+</head>
+<body>
+    
+    <h2>Listener</h2>
+    <button id="miBoton">Haz clic en mí</button>
+
+    <script>
+        const boton = document.getElementById('miBoton');
+
+        // Añadir un listener para el evento 'click'
+        boton.addEventListener('click', () => {
+            alert('¡Has hecho clic en el botón!');
+        });
+
+        // Otra forma de añadir un listener para el evento 'click'
+        boton.addEventListener("click", funcionClick, false);
+
+        function funcionClick() {
+            console.log("Has hecho click en el botón");
+        }
+
+    </script>
+
+
+</body>
+</html>

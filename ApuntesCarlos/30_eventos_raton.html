@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos relativos al ratón</title>
+</head>
+<body>
+    
+    <h2>Eventos relativos al ratón</h2>
+    
+    <button id="boton1">Haz clic aquí</button>
+
+    <script>
+        const boton1 = document.getElementById('boton1');
+
+        //CLICK
+        boton1.addEventListener('click', () => {
+            console.log('El botón ha sido clicado');
+        });
+
+        //DBLCLICK
+        boton1.addEventListener('dblclick', () => {
+            console.log('El botón ha sido doble clicado');
+        });
+
+        //MOUSEOVER
+        boton1.addEventListener('mouseover', () => {
+            console.log('El ratón está sobre el botón');
+        });
+
+        //MOUSEOUT
+        boton1.addEventListener('mouseout', () => {
+            console.log('El ratón ha salido del botón');
+        });
+
+        //MOUSEDOWN
+        boton1.addEventListener('mousedown', () => {
+            console.log('Se ha presionado el botón del ratón sobre el botón');
+        });
+
+        //MOUSEUP
+        boton1.addEventListener('mouseup', () => {
+            console.log('Se ha soltado el botón del ratón sobre el botón');
+        });
+
+    </script>
+
+</body>
+</html>

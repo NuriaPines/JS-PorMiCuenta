@@ -1,0 +1,6 @@
+console.log("La resta de 5 + 3 es: " + restar(5, 3));
+
+function restar (a, b)  //puede ser llamada antes de ser declarada
+{                       //no puede usar la notación =>
+        return a - b;
+}

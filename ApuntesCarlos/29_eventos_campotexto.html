@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos en campos de texto</title>
+</head>
+<body>
+    <h2>Eventos en campos de texto</h2>
+    
+    <input type="text" id="campo1" placeholder="Escribe algo...">
+
+    <script>
+        const campo1 = document.getElementById('campo1');
+
+        //FOCUS
+        campo1.addEventListener('focus', () => {
+            console.log('El campo ha recibido el foco');
+        });
+
+        //BLUR
+        campo1.addEventListener('blur', () => {
+            console.log('El campo ha perdido el foco');
+        });
+
+        //INPUT
+        campo1.addEventListener('input', () => {
+            console.log('El contenido del campo ha cambiado a: ' + campo1.value);
+        });
+
+        //KEYDOWN
+        campo1.addEventListener('keydown', (event) => {
+            console.log('Tecla presionada: ' + event.key);
+        });
+
+        //KEYUP
+        campo1.addEventListener('keyup', (event) => {
+            console.log('Tecla soltada: ' + event.key);
+        });
+
+        //CHANGE
+        campo1.addEventListener('change', () => {
+            console.log('El contenido del campo ha cambiado y el campo ha perdido el foco');
+        });
+
+    </script>
+
+</body>
+</html>
