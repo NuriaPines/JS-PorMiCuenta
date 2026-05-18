@@ -14,3 +14,11 @@ Herramientas clave para tus apuntes:
     variable.toString(): Convierte cualquier cosa a una cadena de texto.
 */
 
+//NUMERO ALEATORIO
+// 1. Math.random() * 6 -> Nos da un decimal entre 0 y 5.999...
+// 2. Math.floor() -> Redondea hacia abajo quitando los decimales (nos deja entre 0 y 5)
+// 3. + 1 -> Desplaza todo un número hacia arriba (nos deja entre 1 y 6)
+
+let numAleatorio = Math.floor(Math.random() * 6) + 1;
+
+console.log(numAleatorio);
