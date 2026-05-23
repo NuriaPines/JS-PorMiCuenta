@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //document.cookie = "usuario-Carlos";
+
+        //PUEDE DAR PROBLEMAS EN LA CODIFICACION
+        let usuario = "Carlos";
+        //document.cookie = "usuario=" + encodeURIComponent(usuario);
+
+        //LAS COOKIES EXPIRAN AL CERRAR EL NAVEGADOR
+        //PODEMOS PONERLE UNA FECHA
+         document.cookie = "usuario=" + encodeURIComponent(usuario) +
+         ";expires=Sat, 6 Aug 2027 12:15:00 GMT;path=/";
+
+         //SE LIMPIA COOKIES PONIENDO EXPIRACION EN EL PASADO
+         function Limpiar()
+         {
+            document.cookie = "usuario=" + encodeURIComponent(usuario) + ";expires=" + new Date(0).toUTCString() + ";path=/";
+ 
+            console.log("cookies limpiadas");
+         }
+
+    </script>
+
+    <button type="button" onclick="alert(document.cookie)">Ver cookies</button>
+
+    
+
+    <button type="button" onclick=Limpiar()>Limpiar cookies</button>
+
+
+</body>
+</html>

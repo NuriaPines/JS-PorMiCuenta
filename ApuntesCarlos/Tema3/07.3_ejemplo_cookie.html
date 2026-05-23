@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Cookies</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 6px 12px;
+      text-align: left;
+    }
+    button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gestión de Cookies</h1>
+
+  <input type="text" id="nombreCookie" placeholder="Nombre de la cookie">
+  <input type="text" id="valorCookie" placeholder="Valor de la cookie">
+  <button onclick="crearCookie()">Crear cookie</button>
+  <button onclick="mostrarCookies()">Mostrar cookies</button>
+
+  <div id="tablaCookies"></div>
+
+  <script>
+    // Crear cookie con expiración y path
+    function crearCookie() {
+      const nombre = document.getElementById("nombreCookie").value;
+      const valor = document.getElementById("valorCookie").value;
+      if (!nombre) return alert("Introduce un nombre para la cookie");
+
+      const fecha = new Date();
+      fecha.setTime(fecha.getTime() + 7 * 24 * 60 * 60 * 1000); // 7 días
+      const expiracion = "expires=" + fecha.toUTCString();
+
+      document.cookie = `${encodeURIComponent(nombre)}=${encodeURIComponent(valor)};${expiracion};path=/`;
+      alert(`Cookie "${nombre}" creada`);
+      mostrarCookies();
+    }
+
+    // Leer todas las cookies y mostrar en una tabla
+    function mostrarCookies() {
+      const cookies = document.cookie ? document.cookie.split("; ") : [];
+      let html = `
+        <table>
+          <tr>
+            <th>Nombre</th>
+            <th>Valor</th>
+            <th>Acción</th>
+          </tr>
+      `;
+
+      cookies.forEach(cookie => {
+        const [nombre, valor] = cookie.split("=");
+        html += `
+          <tr>
+            <td>${decodeURIComponent(nombre)}</td>
+            <td>${decodeURIComponent(valor)}</td>
+            <td><button onclick="borrarCookie('${decodeURIComponent(nombre)}')">Borrar</button></td>
+          </tr>
+        `;
+      });
+
+      html += "</table>";
+      document.getElementById("tablaCookies").innerHTML = html;
+    }
+
+    // Borrar una cookie individual
+    function borrarCookie(nombre) {
+      document.cookie = `${encodeURIComponent(nombre)}=;expires=${new Date(0).toUTCString()};path=/`;
+      alert(`Cookie "${nombre}" borrada`);
+      mostrarCookies();
+    }
+
+    // Mostrar cookies al cargar la página
+    mostrarCookies();
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de localStorage</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 6px 12px;
+      text-align: left;
+    }
+    button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gestión de localStorage</h1>
+
+  <input type="text" id="clave" placeholder="Clave">
+  <input type="text" id="valor" placeholder="Valor">
+  <button onclick="guardarDato()">Guardar dato</button>
+  <button onclick="mostrarDatos()">Mostrar datos</button>
+  <button onclick="limpiarLocalStorage()">Limpiar todo</button>
+
+  <div id="tablaDatos"></div>
+
+  <script>
+    // Guardar un dato en localStorage
+    function guardarDato() {
+      const clave = document.getElementById("clave").value;
+      const valor = document.getElementById("valor").value;
+      if (!clave) return alert("Introduce una clave");
+
+      localStorage.setItem(clave, valor);
+      alert(`Dato "${clave}" guardado`);
+      mostrarDatos();
+    }
+
+    // Mostrar todos los datos de localStorage en tabla
+    function mostrarDatos() {
+      const tabla = document.getElementById("tablaDatos");
+      let html = `
+        <table>
+          <tr>
+            <th>Clave</th>
+            <th>Valor</th>
+            <th>Acción</th>
+          </tr>
+      `;
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const clave = localStorage.key(i);
+        const valor = localStorage.getItem(clave);
+        html += `
+          <tr>
+            <td>${clave}</td>
+            <td>${valor}</td>
+            <td><button onclick="borrarDato('${clave}')">Borrar</button></td>
+          </tr>
+        `;
+      }
+
+      html += "</table>";
+      tabla.innerHTML = html;
+    }
+
+    // Borrar un dato individual
+    function borrarDato(clave) {
+      localStorage.removeItem(clave);
+      alert(`Dato "${clave}" borrado`);
+      mostrarDatos();
+    }
+
+    // Limpiar todo el localStorage
+    function limpiarLocalStorage() {
+      localStorage.clear();
+      alert("Todos los datos borrados");
+      mostrarDatos();
+    }
+
+    // Mostrar datos al cargar la página
+    mostrarDatos();
+  </script>
+</body>
+</html>
+
